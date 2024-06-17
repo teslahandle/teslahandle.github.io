@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tesla Handle</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            height: 600px; /* Double the original height */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-shadow: 2px 2px 4px #000;
+            font-size: 2.5em;
+            font-weight: bold;
+            position: relative;
+        }
+        .carousel {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+        .carousel img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Ensure the images are fully visible */
+            display: none;
+        }
+        .carousel img.active {
+            display: block;
+        }
+        .carousel-buttons {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+        .carousel-buttons button {
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+        }
+        .container {
+            padding: 20px;
+        }
+        .button {
+            display: block;
+            width: 100%;
+            max-width: 300px;
+            margin: 20px auto;
+            padding: 15px 20px;
+            font-size: 1.2em;
+            color: white;
+            background-color: #6c63ff;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .button:hover {
+            background-color: #5a54d1;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        .section-content {
+            display: none;
+            margin-top: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #6c63ff;
+            color: white;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        .fullscreen-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+        .fullscreen-modal img {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+        }
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .close-modal:hover,
+        .close-modal:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+        <script>
+            function toggleSection(sectionId) {
+                var section = document.getElementById(sectionId);
+                if (section.style.display === 'none' || section.style.display === '') {
+                    section.style.display = 'block';
+                } else {
+                    section.style.display = 'none';
+                }
+            }
+        </script>
+</head>
+<body>
+
+<header>
+    <div class="carousel">
+        <img src="IMG_3645.JPG" alt="Tesla Handle" class="active" onclick="openModal(this.src)">
+        <img src="IMG_3646.JPG" alt="Tesla Handle" onclick="openModal(this.src)">
+        <img src="IMG_3818.jpg" alt="Tesla Handle" onclick="openModal(this.src)">
+        <img src="IMG_3823.jpg" alt="Tesla Handle" onclick="openModal(this.src)">
+        <img src="IMG_3825.jpg" alt="Tesla Handle" onclick="openModal(this.src)">
+        <div class="carousel-buttons">
+            <button onclick="prevSlide()">&#10094;</button>
+            <button onclick="nextSlide()">&#10095;</button>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+
+    <button class="button" onclick="toggleSection('omSection')">Om Tesla Handle</button>
+    <div id="omSection" class="section-content">
+        <h2>Om Tesla Handle</h2>
+        <p>Förbättra din Tesla Model 3 eller Y med vårt svenskt designade handtag tillverkat av miljövänlig PLA. Detta handtag ger extra komfort för dagliga eller långa resor. När du har använt det kommer du fråga dig själv, "Varför skaffade jag inte detta tidigare?" PLA, som kommer från förnybara resurser som majsstärkelse, bryts ner på 3 till 6 månader och minskar miljöpåverkan avsevärt jämfört med traditionella plaster som tar tusentals år att brytas ner. Komplettera ditt älskade fordon med vårt högkvalitativa, biologiskt nedbrytbara handtag, vilket gör det till en omtänksam gåva för alla Tesla-ägare.</p>
+        <p>Vi har testat vårt PLA-material vid temperaturer upp till +50°C. Högre temperaturer kan dock orsaka deformation. Om du förväntar dig att din bil kommer att utsättas för temperaturer över +60°C under längre perioder, kan du överväga att välja PET-plast för dess större hållbarhet och högre värmebeständighet. Tänk på att medan PET erbjuder förbättrad prestanda, bryts det inte ner lika lätt i miljön som PLA.</p>
+    </div>
+
+    <button class="button" onclick="toggleSection('installationSection')">Hur man installerar och tar bort</button>
+    <div id="installationSection" class="section-content">
+        <h2>Hur man installerar och tar bort</h2>
+        <p>Du behöver inte göra några hål eller skada din älskade bil. Detta handtag med sugkopp lämnar inga märken när det tas bort. Vänligen följ dessa instruktioner för optimal installation:</p>
+        <ul>
+            <li><strong>Förbered ytan:</strong> Använd en våt trasa eller liknande för att ta bort olja eller damm från biltaket så att sugkoppen får bästa möjliga grepp. Var noga med att inte smutsa ner sugkoppen, eftersom det påverkar fästningen.</li>
+            <li><strong>Utrymme för grepp:</strong> Lämna cirka en centimeter utrymme runt sugkoppen för optimalt grepp. Placera handtaget ungefär tre centimeter från solskyddet så att solskyddet kan öppnas och stängas fritt efter installationen.</li>
+            <li><strong>Korrekt installation:</strong> Vid installation, tryck på den runda vita punkten på handtagets övre del. Eftersom takglaset är limmat på bilen, applicera nedåtgående tryck från utsidan av taket för att motverka det uppåtgående trycket på sugkoppen. Denna metod säkerställer att det inte blir någon belastning på taket och förhindrar skador på takglasets lim och tätning.</li>
+            <li><strong>Ta bort handtaget:</strong> Använd ett plastverktyg för att trycka bestämt på någon sida av sugkoppen när du tar bort handtaget. Ett kreditkort fungerar bra. Använd aldrig metall eller något hårdare än plast för att undvika permanent skada på taket. Vi ansvarar inte för eventuella skador.</li>
+            <li><strong>Kontroll efter installation:</strong> Efter installationen, kontrollera att handtaget sitter fast ordentligt på taket. Det bör kunna stödja vikten av din hand. Kontrollera att solskyddet fortfarande kan öppnas och stängas fritt.</li>
+        </ul>
+    </div>
+
+    <button class="button" onclick="toggleSection('variantsSection')">Tillgängliga varianter</button>
+    <div id="variantsSection" class="section-content">
+        <h2>Tillgängliga varianter</h2>
+        <p>Halvtransparent, crèmevit (som på bilden i bannern) - PLA</p>
+        <p>Kall vit - PLA</p>
+        <p>Silkeslen guld - PLA</p>
+        <p>Klar röd - PLA</p>
+        <p>Blå - PLA</p>
+        <p>Slumpmässiga färger - PLA</p>
+        <p>Kall vit - PET</p>
+        <p>Blå - PET</p>
+        <p>Slumpmässiga färger - PET</p>
+    </div>
+
+    <button class="button" onclick="toggleSection('pricingSection')">Priser</button>
+    <div id="pricingSection" class="section-content">
+        <h2>Priser</h2>
+        <table>
+            <tr>
+                <th>Alternativ</th>
+                <th>Pris</th>
+            </tr>
+            <tr>
+                <td>Prova (betala endast om du gillar det)</td>
+                <td>29kr</td>
+            </tr>
+            <tr>
+                <td>1 styck</td>
+                <td>99kr</td>
+            </tr>
+            <tr>
+                <td>2 stycken</td>
+                <td>179kr</td>
+            </tr>
+            <tr>
+                <td>3 stycken</td>
+                <td>269kr</td>
+            </tr>
+            <tr>
+                <td>4 stycken</td>
+                <td>319kr</td>
+            </tr>
+        </table>
+    </div>
+
+    <button class="button" onclick="toggleSection('paymentSection')">Betalning</button>
+    <div id="paymentSection" class="section-content">
+        <h2>Betalning</h2>
+        <p>Jag kommer att känna igen din Swish-betalning genom att matcha avsändarens nummer med ditt kontaktnummer från detta formulär, så du behöver inte oroa dig för vad du ska skriva vid Swish-betalningen. Din Swish-betalning kommer att tas om hand. För frågor om betalningar, skicka gärna ett meddelande till mig på 0700258396 (samma nummer för Swish). Tack för att du undviker att ringa mig och hålla mig upptagen med samtal. På detta sätt kan jag vara mindre upptagen och ge mer tid till min familj.</p>
+    </div>
+
+</div>
+
+<div id="modal" class="fullscreen-modal">
+    <span class="close-modal" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modal-img">
+</div>
+
+<script>
+    let slideIndex = 0;
+    const slides = document.querySelectorAll('.carousel img');
+
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            slide.classList.toggle('active', i === index);
+        });
+    }
+
+    function nextSlide() {
+        slideIndex = (slideIndex + 1) % slides.length;
+        showSlide(slideIndex);
+    }
+
+    function prevSlide() {
+        slideIndex = (slideIndex - 1 + slides.length) % slides.length;
+        showSlide(slideIndex);
+    }
+
+    function openModal(src) {
+        document.getElementById('modal').style.display = 'block';
+        document.getElementById('modal-img').src = src;
+    }
+
+    function closeModal() {
+        document.getElementById('modal').style.display = 'none';
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        setInterval(nextSlide, 3000);
+    });
+</script>
+
+</body>
+</html>
